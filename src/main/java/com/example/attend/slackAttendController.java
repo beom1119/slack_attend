@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,10 +28,11 @@ public class slackAttendController {
     @GetMapping("/slack/{name}")
     public String send(@PathVariable("name") String name){
         RestTemplate restTemplate = new RestTemplate();
-        LocalDateTime startTime = LocalDateTime.now();
+        LocalDateTime startTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
         Map<String,Object> request = new HashMap<>();
         request.put("username", "출석 체크");
-        request.put("text", name + " 오늘 출근 "+startTime.getHour()+ ":" +startTime.getMinute() + "오늘 퇴근"+startTime.plusHours(8).getHour()+":"+startTime.getMinute());
+        request.put("text", "*"+name+"*" + " 출근 "+startTime.getHour()+ ":" +startTime.getMinute() + "," +
+                "  퇴근"+startTime.plusHours(9).getHour()+":"+startTime.getMinute());
         HttpEntity<Map<String,Object>> entity = new HttpEntity<Map<String,Object>>(request);
         // 사용할 슬랙의 Webhook URL 넣기
         restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
@@ -42,9 +44,9 @@ public class slackAttendController {
         return name;
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/hello2")
     public String hello(){
-        return "hello";
+        return "hello2";
     }
 
 }
