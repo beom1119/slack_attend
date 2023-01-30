@@ -26,23 +26,17 @@ public class slackAttendController {
 
     @GetMapping("/attend/{name}")
     public String attend(@PathVariable("name") String name){
-        return slackAttendService.Attend(name);
+        return slackAttendService.attend(name);
     }
 
-    @GetMapping("/slack/{name}")
-    public String send(@PathVariable("name") String name){
-        return slackAttendService.Attend(name);
+    @GetMapping("/attend/dm/{name}")
+    public String dmattend(@PathVariable("name") String name){
+        return slackAttendService.dmAttend(name);
     }
 
-
-    @GetMapping("/hello/{name}")
-    public String hello(@PathVariable("name") String name){
-        return name;
-    }
-
-    @GetMapping("/hello2")
-    public String hello(){
-        return "hello2";
+    @GetMapping("/test")
+    public String test(){
+        return "test";
     }
 
 }

@@ -1,6 +1,8 @@
 package com.example.attend.service;
 
-import org.springframework.beans.factory.annotation.Value;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
@@ -12,27 +14,63 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class slackAttendService {
-
-    @Value("${slack.url}")
-    String url;
-
-    @Value("${slack.channel}")
-    String channel;
-    public String Attend(String name)
+    String dmUrl ="";
+    public String dmAttend(String name)
     {
         RestTemplate restTemplate = new RestTemplate();
         LocalDateTime startTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+        Map<String, Object> request = new HashMap<>();
+        request.put("username", "출석 체크");
+        request.put("text", "*" + name + "*" + " 출근 " + startTime.getHour() + ":" + startTime.getMinute() + "," +
+                "  퇴근" + startTime.plusHours(9).getHour() + ":" + startTime.getMinute());
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<Map<String, Object>>(request);
+        dmUrl = userUrl(name); //슬랙 URL 넣기
+
+        if (dmUrl.equals("X")) {
+            return "등록되지 않은 사용자";
+        } else {
+            restTemplate.exchange(dmUrl, HttpMethod.POST, entity, String.class);
+            return name + " 출근";
+        }
+    }
+
+
+    public String attend(String name)
+    {
+        RestTemplate restTemplate = new RestTemplate();
+        LocalDateTime startTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+
+//        if (startTime.getHour()>10)
+//        {
+//            return "지각"; }
+//        else {
         Map<String,Object> request = new HashMap<>();
         request.put("username", "출석 체크");
         request.put("text", "*"+name+"*" + " 출근 "+startTime.getHour()+ ":" +startTime.getMinute() + "," +
                 "  퇴근"+startTime.plusHours(9).getHour()+":"+startTime.getMinute());
         HttpEntity<Map<String,Object>> entity = new HttpEntity<Map<String,Object>>(request);
         // 사용할 슬랙의 Webhook URL 넣기
-        restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
-        return name+" 출근";
+        restTemplate.exchange("", HttpMethod.POST, entity, String.class);
+        return name+" 출근"; }
+//    }
+
+
+    public String userUrl(String name)
+    {
+        if (name.equals("kobe") || name.equals("beom"))
+        {
+
+        } else if (name.equals("samuel")) {
+
+        }else if (name.equals("linzy")) {
+
+        }else
+        {
+            dmUrl ="X";
+        }
+        return dmUrl;
     }
-
-
 
 }
