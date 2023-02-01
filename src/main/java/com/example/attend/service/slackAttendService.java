@@ -3,6 +3,7 @@ package com.example.attend.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,27 @@ import java.util.Map;
 @Service
 @Slf4j
 public class slackAttendService {
+
+
+    @Value("${kobe.key}")
+    private String kobeKey;
+    @Value("${samuel.key}")
+    private String samuelKey;
+    @Value("${linzy.key}")
+    private String linzyKey;
+    @Value("${brody.key}")
+    private String brodyKey;
+
+
+
+
+
     String dmUrl ="";
+
+
+
+
+
     public String dmAttend(String name)
     {
         RestTemplate restTemplate = new RestTemplate();
@@ -28,7 +49,7 @@ public class slackAttendService {
         HttpEntity<Map<String, Object>> entity = new HttpEntity<Map<String, Object>>(request);
         dmUrl = userUrl(name); //슬랙 URL 넣기
 
-        if (dmUrl.equals("X")) {
+        if (dmUrl.equals("")) {
             return "등록되지 않은 사용자";
         } else {
             restTemplate.exchange(dmUrl, HttpMethod.POST, entity, String.class);
@@ -52,7 +73,7 @@ public class slackAttendService {
                 "  퇴근"+startTime.plusHours(9).getHour()+":"+startTime.getMinute());
         HttpEntity<Map<String,Object>> entity = new HttpEntity<Map<String,Object>>(request);
         // 사용할 슬랙의 Webhook URL 넣기
-        restTemplate.exchange("", HttpMethod.POST, entity, String.class);
+        restTemplate.exchange("https://hooks.slack.com/services/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", HttpMethod.POST, entity, String.class);
         return name+" 출근"; }
 //    }
 
@@ -61,14 +82,16 @@ public class slackAttendService {
     {
         if (name.equals("kobe") || name.equals("beom"))
         {
-
+            dmUrl = kobeKey;
         } else if (name.equals("samuel")) {
-
+            dmUrl = samuelKey;
         }else if (name.equals("linzy")) {
-
-        }else
+            dmUrl = linzyKey;
+        }else if (name.equals("brody")) {
+            dmUrl = brodyKey;
+        } else
         {
-            dmUrl ="X";
+            dmUrl ="";
         }
         return dmUrl;
     }
