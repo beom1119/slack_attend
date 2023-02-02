@@ -27,7 +27,10 @@ public class slackAttendService {
     private String linzyKey;
     @Value("${brody.key}")
     private String brodyKey;
-
+    @Value("${zeri.key}")
+    private String zeriKey;
+    @Value("${steve.key}")
+    private String steveKey;
 
 
 
@@ -89,7 +92,13 @@ public class slackAttendService {
             dmUrl = linzyKey;
         }else if (name.equals("brody")) {
             dmUrl = brodyKey;
-        } else
+        }
+        else if (name.equals("zeri")) {
+            dmUrl = zeriKey;
+        }
+        else if (name.equals("steve")) {
+            dmUrl = steveKey;
+        }else
         {
             dmUrl ="";
         }
