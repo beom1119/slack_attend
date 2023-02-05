@@ -18,7 +18,6 @@ import java.util.Map;
 @Slf4j
 public class slackAttendService {
 
-
     @Value("${kobe.key}")
     private String kobeKey;
     @Value("${samuel.key}")
@@ -28,14 +27,13 @@ public class slackAttendService {
     @Value("${brody.key}")
     private String brodyKey;
 
+    @Value("${zeri.key}")
+    private String zeriKey;
 
-
-
+    @Value("${steve.key}")
+    private String steveKey;
 
     String dmUrl ="";
-
-
-
 
 
     public String dmAttend(String name)
@@ -57,16 +55,15 @@ public class slackAttendService {
         }
     }
 
-
     public String attend(String name)
     {
         RestTemplate restTemplate = new RestTemplate();
         LocalDateTime startTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
 
-//        if (startTime.getHour()>10)
-//        {
-//            return "지각"; }
-//        else {
+        if (startTime.getHour()>10)
+        {
+            return "지각"; }
+        else {
         Map<String,Object> request = new HashMap<>();
         request.put("username", "출석 체크");
         request.put("text", "*"+name+"*" + " 출근 "+startTime.getHour()+ ":" +startTime.getMinute() + "," +
@@ -75,12 +72,15 @@ public class slackAttendService {
         // 사용할 슬랙의 Webhook URL 넣기
         restTemplate.exchange("https://hooks.slack.com/services/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", HttpMethod.POST, entity, String.class);
         return name+" 출근"; }
-//    }
+    }
 
 
+
+    /// ENUM 맵 만들어서 contain 사용하기 -> 해보기
+    /// 정책이 추가될 수 있으면 사무엘이 말한 방법 사용하기. -> 해보기
     public String userUrl(String name)
     {
-        if (name.equals("kobe") || name.equals("beom"))
+        if (name.equals("kobe"))
         {
             dmUrl = kobeKey;
         } else if (name.equals("samuel")) {
@@ -89,7 +89,12 @@ public class slackAttendService {
             dmUrl = linzyKey;
         }else if (name.equals("brody")) {
             dmUrl = brodyKey;
-        } else
+        }else if (name.equals("zeri")) {
+            dmUrl = zeriKey;
+        }else if (name.equals("steve")) {
+            dmUrl = steveKey;
+        }
+        else
         {
             dmUrl ="";
         }
