@@ -5,4 +5,9 @@
     <select id="getUserList" resultType="com.example.attend.dto.user">
         SELECT * FROM users;
     </select>
+
+    <select id="getSamuel" resultType="com.example.attend.dto.user">
+        SELECT * FROM users where name ='samuel';
+    </select>
 </mapper>
+

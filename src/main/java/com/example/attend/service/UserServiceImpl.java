@@ -11,9 +11,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
     private final UserMapper userMapper;
-
     @Override
     public List<user> getUserList() {
         return userMapper.getUserList();
+    }
+
+
+    @Override
+    public List<user> getSamuel() {
+        return userMapper.getSamuel();
     }
 }

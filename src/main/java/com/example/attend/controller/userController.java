@@ -30,4 +30,11 @@ public class userController {
     }
 
 
+    @GetMapping("/getsamuel")
+    public List<user> getSamuel()
+    {
+        return userService.getSamuel();
+    }
+
+
 }

@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface UserMapper {
     List<user> getUserList();
+
+    List<user> getSamuel();
 }
