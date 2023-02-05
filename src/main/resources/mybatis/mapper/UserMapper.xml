@@ -7,7 +7,7 @@
     </select>
 
     <select id="getSamuel" resultType="com.example.attend.dto.user">
-        SELECT * FROM users where name ='samuel';
+        SELECT * FROM users where name ='이범기';
     </select>
 </mapper>
 
