@@ -1,4 +1,4 @@
-package com.example.attend.service;
+package com.example.attend.service.attend;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,19 +18,19 @@ import java.util.Map;
 @Slf4j
 public class slackAttendService {
 
-
-    @Value("${kobe.key}")
-    private String kobeKey;
-    @Value("${samuel.key}")
-    private String samuelKey;
-    @Value("${linzy.key}")
-    private String linzyKey;
-    @Value("${brody.key}")
-    private String brodyKey;
-    @Value("${zeri.key}")
-    private String zeriKey;
-    @Value("${steve.key}")
-    private String steveKey;
+//
+//    @Value("${kobe.key}")
+//    private String kobeKey;
+//    @Value("${samuel.key}")
+//    private String samuelKey;
+//    @Value("${linzy.key}")
+//    private String linzyKey;
+//    @Value("${brody.key}")
+//    private String brodyKey;
+//    @Value("${zeri.key}")
+//    private String zeriKey;
+//    @Value("${steve.key}")
+//    private String steveKey;
 
 
 
@@ -83,25 +83,25 @@ public class slackAttendService {
 
     public String userUrl(String name)
     {
-        if (name.equals("kobe") || name.equals("beom"))
-        {
-            dmUrl = kobeKey;
-        } else if (name.equals("samuel")) {
-            dmUrl = samuelKey;
-        }else if (name.equals("linzy")) {
-            dmUrl = linzyKey;
-        }else if (name.equals("brody")) {
-            dmUrl = brodyKey;
-        }
-        else if (name.equals("zeri")) {
-            dmUrl = zeriKey;
-        }
-        else if (name.equals("steve")) {
-            dmUrl = steveKey;
-        }else
-        {
-            dmUrl ="";
-        }
+//        if (name.equals("kobe") || name.equals("beom"))
+//        {
+//            dmUrl = kobeKey;
+//        } else if (name.equals("samuel")) {
+//            dmUrl = samuelKey;
+//        }else if (name.equals("linzy")) {
+//            dmUrl = linzyKey;
+//        }else if (name.equals("brody")) {
+//            dmUrl = brodyKey;
+//        }
+//        else if (name.equals("zeri")) {
+//            dmUrl = zeriKey;
+//        }
+//        else if (name.equals("steve")) {
+//            dmUrl = steveKey;
+//        }else
+//        {
+//            dmUrl ="";
+//        }
         return dmUrl;
     }
 

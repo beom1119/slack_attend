@@ -1,4 +1,4 @@
-package com.example.attend.domain.Employee;
+package com.example.attend.domain.employee;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.example.attend.domain.Attend;
+package com.example.attend.domain.attend;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
