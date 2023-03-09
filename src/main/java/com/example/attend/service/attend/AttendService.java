@@ -25,7 +25,9 @@ public class AttendService {
 
         Employee employee = employeeRepository.findById(id).orElseThrow(IllegalArgumentException::new);
 
-        ///many to one
+        /****
+         *
+         */
         Attend attend = Attend.builder()
                 .startTime(LocalDateTime.now())
                 .employee(employee)
@@ -36,6 +38,16 @@ public class AttendService {
     }
 
 
+    /**
+     *
+     * @param hello
+     * @return
+     * @throws RuntimeException
+     */
+    public String commentTest(String hello) throws RuntimeException
+    {
+        return "";
+    }
 
 
 
