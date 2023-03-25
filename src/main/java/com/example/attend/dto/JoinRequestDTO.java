@@ -28,10 +28,13 @@ public class JoinRequestDTO {
     public static class EmployeeDTO{
 
         private String name;
+        private String slackUrl;
+
 
         @Builder
-        public EmployeeDTO(String name) {
+        public EmployeeDTO(String name, String slackUrl) {
             this.name = name;
+            this.slackUrl = slackUrl;
         }
     }
 

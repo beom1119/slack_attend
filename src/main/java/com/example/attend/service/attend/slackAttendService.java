@@ -18,19 +18,6 @@ import java.util.Map;
 @Slf4j
 public class slackAttendService {
 
-//
-//    @Value("${kobe.key}")
-//    private String kobeKey;
-//    @Value("${samuel.key}")
-//    private String samuelKey;
-//    @Value("${linzy.key}")
-//    private String linzyKey;
-//    @Value("${brody.key}")
-//    private String brodyKey;
-//    @Value("${zeri.key}")
-//    private String zeriKey;
-//    @Value("${steve.key}")
-//    private String steveKey;
 
 
 

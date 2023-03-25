@@ -3,7 +3,7 @@ package com.example.attend.service.employee;
 import com.example.attend.domain.employee.Employee;
 import com.example.attend.domain.employee.EmployeeRepository;
 import com.example.attend.dto.JoinRequestDTO;
-import lombok.NoArgsConstructor;
+import com.example.attend.common.CommonUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,15 +17,16 @@ public class EmployeeService {
 
     public String join(JoinRequestDTO requestDTO) {
 
-
-
+        String userKey = CommonUtil.makeKey(requestDTO.getEmployee().getName(),requestDTO.getEmployee().getSlackUrl());
 
         Employee employee = Employee.builder()
                 .name(requestDTO.getEmployee().getName())
-                .build();
+                        .slackUrl(requestDTO.getEmployee().getSlackUrl())
+                                .userKey(userKey)
+                                        .build();
 
         employeeRepository.save(employee);
-        return employee.getName()+"회원가입 완료";
+        return employee.getName()+" 회원가입 완료";
     }
 
 

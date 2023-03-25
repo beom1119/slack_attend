@@ -25,17 +25,17 @@ public class Employee {
     private String name;
 
     @Column
-    private int lateTime;
+    private String slackUrl;
 
-    @OneToMany(mappedBy = "employee")
-    private List<Attend> attendList = new ArrayList<Attend>();
+    @Column
+    private String userKey;
 
 
     @Builder
-    public Employee(Long id, String name, int lateTime, List<Attend> attendList) {
+    public Employee(Long id, String name, String slackUrl, String userKey) {
         Id = id;
         this.name = name;
-        this.lateTime = lateTime;
-        this.attendList = attendList;
+        this.slackUrl = slackUrl;
+        this.userKey = userKey;
     }
 }

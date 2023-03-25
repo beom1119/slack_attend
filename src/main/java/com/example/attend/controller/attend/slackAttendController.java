@@ -21,9 +21,6 @@ public class slackAttendController {
 //        return slackAttendService.dmAttend(name);
 //    }
 
-//    @GetMapping("/test")
-//    public String test(){
-//        return "test";
-//    }
+
 
 }

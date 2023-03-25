@@ -24,11 +24,10 @@ public class AttendController {
         return "test";
     }
 
-    @GetMapping("/attend/{id}")
-    public String attend(@PathVariable Long id, @RequestBody @Valid AttendRequestDTO request)
+    @GetMapping("/attend/{userKey}")
+    public String attend(@PathVariable String userKey, @RequestBody @Valid AttendRequestDTO request)
     {
-
-        return attendService.attend(id);
+        return attendService.attend(userKey);
     }
 
 }
