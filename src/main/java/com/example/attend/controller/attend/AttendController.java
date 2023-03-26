@@ -18,14 +18,14 @@ public class AttendController {
     private final AttendService attendService;
 
 
-    @GetMapping("/test")
+    @GetMapping("/slack/test")
     public String test()
     {
         return "test";
     }
 
-    @GetMapping("/attend/{userKey}")
-    public String attend(@PathVariable String userKey, @RequestBody @Valid AttendRequestDTO request)
+    @GetMapping("/slack/attend/{userKey}")
+    public String attend(@PathVariable String userKey)
     {
         return attendService.attend(userKey);
     }

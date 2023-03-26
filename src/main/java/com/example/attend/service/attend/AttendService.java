@@ -32,7 +32,6 @@ public class AttendService {
         Employee employee = employeeRepository.findByUserKey(userKey).orElseThrow(IllegalArgumentException::new);
 
 
-
             RestTemplate restTemplate = new RestTemplate();
             LocalDateTime startTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
             Map<String, Object> request = new HashMap<>();

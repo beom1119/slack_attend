@@ -17,14 +17,9 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
-
-    @PostMapping("/join")
+    @PostMapping("/slack/join")
     public String join(@RequestBody JoinRequestDTO requestDTO)
     {
         return employeeService.join(requestDTO);
     }
-
-
-
-
 }
